@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, Space } from "antd";
 
-import { useUser } from "./context/UserContext";
-import Page from "./Page";
-import SearchBar from "./SearchBar";
+import { useUser } from "../../context/UserContext";
+import Page from "../../layouts/Page";
+import SearchBar from "../SearchBar";
 import "./PostsPage.css";
 
 export interface Post {
@@ -14,7 +14,7 @@ export interface Post {
   body: string;
 }
 
-export default function Posts() {
+export default function PostsPage() {
   const { user } = useUser();
   const [posts, setPosts] = useState<Post[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
