@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import PostsPage from './PostsPage';
+import PostsPage from "./PostsPage";
 import "./App.css";
 import { ConfigProvider } from "antd";
 import UserDetailsPage from "./UserDetailsPage";
@@ -12,19 +12,19 @@ function App() {
     <ConfigProvider
       theme={{
         token: {
-          fontFamily: 'Helvetica Neue',
-          colorPrimary: 'black',
+          fontFamily: "Helvetica Neue",
+          colorPrimary: "black",
         },
       }}
     >
-          <BrowserRouter>
-            <Routes>
-                <Route path="posts" element={<PostsPage />} />
-                <Route path="active-user" element={<UserDetailsPage />} />
-                <Route path="*" element={<PostsPage />} />
-            </Routes>
-          </BrowserRouter>
-  </ConfigProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="posts" element={<PostsPage />} />
+          <Route path="active-user" element={<UserDetailsPage />} />
+          <Route path="*" element={<PostsPage />} />
+        </Routes>
+      </BrowserRouter>
+    </ConfigProvider>
   );
 }
 
