@@ -33,7 +33,7 @@ export default function Page(props: PageProps) {
         </div>
         <h1>{title}</h1>
         <div className="page-header-item right">
-          {/* Simple Ant design component. Controls the current user which can be accessed by other components */}
+          {/* Simple Ant design component with custom styles. Controls the current user which can be accessed by other components */}
           <Select
             defaultValue={1}
             onChange={handleUserChange}
@@ -43,6 +43,7 @@ export default function Page(props: PageProps) {
               { value: 3, label: <span>User 3</span> },
             ]}
             value={user}
+            className="user-select"
           />
         </div>
       </Header>
