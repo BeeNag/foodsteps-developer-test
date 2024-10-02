@@ -26,4 +26,4 @@ We recommend spending about 2 hours on this task. If there is anything you misse
 
 I have completed the tasks that have been requested. I have left some comments in some of the places where I think there could be improvements (especially in the search bar!).
 
-I would also like to add a breif comment here that I would probably have updated the typescript configuration file to include path aliases next to make the imports tidier.
+I would also like to add a brief comment here that I would probably have updated the typescript configuration file to include path aliases next to make the imports tidier.
