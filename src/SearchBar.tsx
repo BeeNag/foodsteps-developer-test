@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ReactComponent as SearchIcon } from "./assets/search_icon.svg";
+import { ReactComponent as CloseIcon } from "./assets/circular_icon_button.svg";
 import type { Post } from "./PostsPage";
-import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
-import { ReactComponent as CloseIcon } from "../../assets/circular_icon_button.svg";
 
 import "./SearchBar.css";
 
@@ -11,16 +11,14 @@ interface SearchBarProps {
   onSearch: (filteredPosts: Post[]) => void;
 }
 
+// This is a quick solution for the search bar, ideally the search should probably be debounced.
+// Probably also a good idea to memoize the filtered posts if the data set was any larger than this.
+// If it was even larger I would probably suggest doing the search itself on the server side
+// (i.e. Send the search query to an api endpoint and then search through the dataset there and return the results to the FE).
+
 const SearchBar = ({ posts, onSearch }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(false);
-  const handleClear = () => {
-    setSearchQuery("");
-    onSearch(posts); // Reset posts when clearing the search query
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -33,7 +31,14 @@ const SearchBar = ({ posts, onSearch }: SearchBarProps) => {
           )
         : posts;
 
-    onSearch(filteredPosts); // updated filtered posts in parent component
+    onSearch(filteredPosts); // update filtered posts in parent
+  };
+
+  const handleFocus = () => setIsFocused(true);
+  const handleBlur = () => setIsFocused(false);
+  const handleClear = () => {
+    setSearchQuery("");
+    onSearch(posts); // Reset posts when clearing the search query
   };
 
   const isActive = isFocused || searchQuery.length > 0;

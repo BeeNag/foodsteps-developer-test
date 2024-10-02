@@ -4,6 +4,7 @@ import { Card, Space } from "antd";
 
 import { useUser } from "./context/UserContext";
 import Page from "./Page";
+import SearchBar from "./SearchBar";
 import "./PostsPage.css";
 
 export interface Post {
@@ -16,19 +17,26 @@ export interface Post {
 export default function Posts() {
   const { user } = useUser();
   const [posts, setPosts] = useState<Post[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user}`)
       .then((response) => response.json())
-      .then((json) => setPosts(json));
+      .then((json) => {
+        setPosts(json);
+        setFilteredPosts(json); // Initialise the filtered posts to show all posts initially
+      });
   }, [user]);
 
   return (
     <Page title="Posts">
       <Space direction="vertical">
-        {posts.length === 0
+        <SearchBar posts={posts} onSearch={setFilteredPosts} />
+        {filteredPosts.length === 0
           ? "No posts found."
-          : posts.map((post, index) => <PostCard key={index} post={post} />)}
+          : filteredPosts.map((post, index) => (
+              <PostCard key={index} post={post} />
+            ))}
       </Space>
     </Page>
   );
