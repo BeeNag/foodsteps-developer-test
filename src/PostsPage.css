@@ -9,3 +9,40 @@
   color: black;
   border-color: black !important;
 }
+
+.ant-select-single {
+  height: auto;
+}
+
+.user-select .ant-select-selector {
+  background-color: rgb(254, 250, 219) !important;
+  border: 2px solid black !important;
+  color: black;
+  height: 40px !important;
+}
+
+.user-select .ant-select-arrow {
+  color: black;
+}
+
+.ant-select-dropdown {
+  background-color: rgb(254, 250, 219);
+  border: 2px solid black;
+}
+
+.ant-select-dropdown .ant-select-item-option {
+  background-color: rgb(254, 250, 219);
+}
+
+.ant-select-dropdown .ant-select-item-option-selected {
+  background-color: rgb(255, 245, 168) !important;
+}
+
+.ant-select-dropdown
+  .ant-select-item-option:not(.ant-select-item-option-selected):hover {
+  background-color: rgba(255, 245, 168, 0.5);
+}
+
+.ant-select-dropdown .ant-select-item-option-active {
+  background-color: rgba(255, 245, 168, 0.5);
+}

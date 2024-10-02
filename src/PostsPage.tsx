@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-
 import { Card, Space } from "antd";
-import "./PostsPage.css";
+
+import { useUser } from "./context/UserContext";
 import Page from "./Page";
-import { DEFAULT_USER_ID } from "./App";
+import "./PostsPage.css";
 
 export interface Post {
   userId: number;
@@ -13,15 +13,14 @@ export interface Post {
 }
 
 export default function Posts() {
+  const { user } = useUser();
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    fetch(
-      `https://jsonplaceholder.typicode.com/posts?userId=${DEFAULT_USER_ID}`
-    )
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user}`)
       .then((response) => response.json())
       .then((json) => setPosts(json));
-  }, []);
+  }, [user]);
 
   return (
     <Page title="Posts">

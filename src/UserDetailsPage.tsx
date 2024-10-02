@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Page from "./Page";
 import { Spin } from "antd";
-import { DEFAULT_USER_ID } from "./App";
+
+import { useUser } from "./context/UserContext";
+import Page from "./Page";
 
 interface UserDetails {
   name: string;
@@ -11,15 +12,16 @@ interface UserDetails {
 }
 
 export default function UserDetailsPage() {
+  const { user } = useUser();
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${DEFAULT_USER_ID}`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${user}`)
       .then((response) => response.json())
       .then((json) => {
         setUserDetails(json);
       });
-  }, [setUserDetails]);
+  }, [setUserDetails, user]);
 
   return (
     <Page title="User Details">
