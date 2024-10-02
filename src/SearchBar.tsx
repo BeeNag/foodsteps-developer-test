@@ -11,8 +11,9 @@ interface SearchBarProps {
   onSearch: (filteredPosts: Post[]) => void;
 }
 
-// This is a quick solution for the search bar, ideally the search should probably be debounced.
-// Probably also a good idea to memoize the filtered posts if the data set was any larger than this.
+// Initially tried to do this using the Ant Design Search input but adding custom styling to that was going to take too long so I came up with this custom component instead.
+// This is a quick solution for the search bar, ideally the search function should probably be debounced.
+// It is probably also a good idea to memoize the filtered posts if the data set was any larger than this.
 // If it was even larger I would probably suggest doing the search itself on the server side
 // (i.e. Send the search query to an api endpoint and then search through the dataset there and return the results to the FE).
 
