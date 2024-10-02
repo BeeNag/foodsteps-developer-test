@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, Space } from "antd";
 
 import { useUser } from "./context/UserContext";
@@ -39,10 +40,28 @@ interface PostCardProps {
 
 function PostCard(props: PostCardProps) {
   const { post } = props;
+  const [expandedPostId, setExpandedPostId] = useState<number | null>(null);
+
+  const handlePostClick = (postId: number) => {
+    setExpandedPostId((prevId) => (prevId === postId ? null : postId));
+  };
 
   return (
-    <Card className="post-card">
+    // The Card component will expand when clicked to show the body content of a post. Click it again to reduce back to just the title
+    <Card className="post-card" onClick={() => handlePostClick(post.id)}>
       <h3>{post.title}</h3>
+      <AnimatePresence>
+        {expandedPostId === post.id && (
+          <motion.div
+            initial={{ maxHeight: 0, opacity: 0 }}
+            animate={{ maxHeight: 500, opacity: 1 }} // This is a bit of a quick hack. Probably a better idea to calculate the height needed with a ref that way it will always be correct
+            exit={{ maxHeight: 0, opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+          >
+            <p>{post.body}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Card>
   );
 }

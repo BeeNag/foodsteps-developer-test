@@ -2,6 +2,7 @@
   background-color: rgb(254, 250, 219);
   border: 2px solid black;
   width: 500px;
+  cursor: pointer;
 }
 
 .post-card,
