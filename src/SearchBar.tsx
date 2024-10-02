@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import type { Post } from "./PostsPage";
+import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
+import { ReactComponent as CloseIcon } from "../../assets/circular_icon_button.svg";
 
 import "./SearchBar.css";
 
@@ -47,6 +49,10 @@ const SearchBar = ({ posts, onSearch }: SearchBarProps) => {
       whileHover={{ boxShadow: "0px 2px 8px 0px rgba(0, 0, 0, 0.24)" }}
       transition={{ duration: 0.15, ease: "easeInOut" }}
     >
+      <SearchIcon
+        className="search-icon"
+        style={{ color: isActive ? "#000" : "#939393" }}
+      />
       <input
         type="text"
         className="search-input"
@@ -56,6 +62,13 @@ const SearchBar = ({ posts, onSearch }: SearchBarProps) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
+      {searchQuery && (
+        <button className="clear-button" onClick={handleClear}>
+          <CloseIcon className="close-icon" />
+        </button>
+      )}
     </motion.div>
   );
 };
+
+export default SearchBar;

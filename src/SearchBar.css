@@ -27,3 +27,26 @@
 .search-input::placeholder {
   color: #939393;
 }
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.clear-button .close-icon {
+  color: #939393;
+  transition: color 0.15s ease-in-out;
+}
+
+.clear-button:hover .close-icon {
+  color: #000;
+}
