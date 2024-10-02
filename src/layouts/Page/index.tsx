@@ -3,8 +3,8 @@ import { UnorderedListOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Select } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 
-import { useUser } from "./context/UserContext";
-import AvatarButton from "./AvatarButton";
+import { useUser } from "../../context/UserContext";
+import AvatarButton from "../../components/AvatarButton";
 import "./Page.css";
 
 interface PageProps {

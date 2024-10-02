@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import SearchBar from "../SearchBar";
+import SearchBar from "../index";
 
 const mockPosts = [
   { userId: 1, id: 1, title: "First Post", body: "Body of first post" },

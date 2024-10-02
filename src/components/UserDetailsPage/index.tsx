@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Spin } from "antd";
 
-import { useUser } from "./context/UserContext";
-import Page from "./Page";
+import { useUser } from "../../context/UserContext";
+import Page from "../../layouts/Page";
 
 interface UserDetails {
   name: string;

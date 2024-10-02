@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ConfigProvider } from "antd";
 
 import { UserProvider } from "./context/UserContext";
-import PostsPage from "./PostsPage";
-import UserDetailsPage from "./UserDetailsPage";
+import PostsPage from "./components/PostsPage";
+import UserDetailsPage from "./components/UserDetailsPage";
 import "./App.css";
 
 function App() {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ReactComponent as SearchIcon } from "./assets/search_icon.svg";
-import { ReactComponent as CloseIcon } from "./assets/circular_icon_button.svg";
-import type { Post } from "./PostsPage";
+import { ReactComponent as SearchIcon } from "../../assets/search_icon.svg";
+import { ReactComponent as CloseIcon } from "../../assets/circular_icon_button.svg";
+import type { Post } from "../PostsPage";
 
 import "./SearchBar.css";
 
